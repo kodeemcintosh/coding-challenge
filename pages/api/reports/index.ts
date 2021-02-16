@@ -2,10 +2,9 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import { PrismaClient } from '@prisma/client';
 
-const prisma = new PrismaClient();
+export const prisma = new PrismaClient();
 
-const handler = async (req: NextApiRequest, res: NextApiResponse) => {
-  req;
+const handler = async ({}: NextApiRequest, res: NextApiResponse) => {
   try {
     let reports: any = await prisma.report.findMany({
       where: {

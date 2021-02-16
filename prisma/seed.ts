@@ -1,8 +1,8 @@
 
-import { PrismaClient } from '@prisma/client';
 import reports from './data/reports.json';
+import { PrismaClient } from '@prisma/client';
 
-const prisma = new PrismaClient();
+export const prisma = new PrismaClient();
 
 async function main() {
   for await (let report of reports.elements) {

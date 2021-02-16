@@ -1,9 +1,9 @@
 
 import { FC, useState } from 'react';
-import fetch from 'isomorphic-unfetch';
 import { Header } from '@components/header';
 import { Footer } from '@components/footer';
 import { TicketItem } from '@components/ticket-item';
+import { Ticket } from '@typeDefs/ticket';
 
 export async function getServerSideProps () {
   const data = await fetch('http://localhost:3000/api/reports');
@@ -13,18 +13,18 @@ export async function getServerSideProps () {
     props: {
       reports
     }
-  }
+  };
 }
 
 interface IndexPageProps {
-  reports: any;
+  reports: Ticket[];
 }
 
 const IndexPage: FC<IndexPageProps> = ({ reports }) => {
-  const [ tickets, setTickets ] = useState(reports);
+  const [ tickets, setTickets ] = useState(reports ?? []);
 
   const handleUpdateTicket = async (id: string, state: string) => {
-    const response = await fetch(`http://localhost:3000/api/reports/${id}`, {
+    const data = await fetch(`http://localhost:3000/api/reports/${id}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
@@ -34,7 +34,7 @@ const IndexPage: FC<IndexPageProps> = ({ reports }) => {
         ticketState: state
       })
     });
-    const { reports } = await response.json();
+    const { reports } = await data.json();
     setTickets(reports);
   }
 
@@ -42,7 +42,7 @@ const IndexPage: FC<IndexPageProps> = ({ reports }) => {
     <>
       <Header />
       <div className="flex mx-20 justify-center">
-        <div className="bg-white rounded-lg shadow-sm hover:shadow-lg duration-500 px-2 sm:px-6 md:px-2 py-4 my-6 w-4/5">
+        <div className="bg-white rounded-lg shadow-sm hover:shadow-lg duration-500 px-2 sm:px-6 md:px-2 py-2 my-4 w-4/5">
             {tickets?.map(({ id, type, status, message }: any) => {
               return(
                 <TicketItem

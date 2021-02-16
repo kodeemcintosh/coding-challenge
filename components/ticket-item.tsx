@@ -18,7 +18,7 @@ export const TicketItem: FC<TicketItemProps> = ({ id, status, type, message, upd
   const handleBlock = () => updateTicket(id, 'BLOCKED');
   return(
     <>
-      <div className="row m-4 p-4 display-inline bg-gray-100 rounded-lg shadow-sm hover:shadow-md">
+      <div className="row m-8 p-4 display-inline bg-gray-100 rounded-lg shadow-sm hover:shadow-md">
         <div className="col text-center hidden sm:block">
           <a className="grid mx-auto mb-3 py-1 2lg:w-3/5 rounded-md shadow-md bg-green-300">
               <label className="inline-block font-medium text-gray-600 mx-1 text-sm lg:text-md">
