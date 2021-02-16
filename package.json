@@ -10,6 +10,7 @@
     "migrate:reset": "prisma migrate reset --preview-feature --force",
     "dev": "next dev",
     "build": "next build",
+    "build:production": "yarn migrate:reset && next build",
     "start": "next start",
     "start:production": "yarn migrate:reset && next build && next start"
   },
