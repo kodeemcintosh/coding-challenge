@@ -5,7 +5,7 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 First, get the project's dependencies with:
 
 ```bash
-yarn dev
+yarn
 ```
 
 Second, run the development server:
