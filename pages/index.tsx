@@ -1,5 +1,6 @@
 
 import { FC, useState } from 'react';
+import fetch from 'isomorphic-fetch';
 import { Header } from '@components/header';
 import { Footer } from '@components/footer';
 import { TicketItem } from '@components/ticket-item';
