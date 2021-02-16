@@ -7,7 +7,7 @@ import { TicketItem } from '@components/ticket-item';
 import { Ticket } from '@typeDefs/ticket';
 
 export async function getServerSideProps () {
-  const data = await fetch('http://localhost:3000/api/reports');
+  const data = await fetch('http://0.0.0.0:3000/api/reports');
   const { reports } = await data.json();
 
   return {
@@ -25,7 +25,7 @@ const IndexPage: FC<IndexPageProps> = ({ reports }) => {
   const [ tickets, setTickets ] = useState(reports ?? []);
 
   const handleUpdateTicket = async (id: string, state: string) => {
-    const data = await fetch(`http://localhost:3000/api/reports/${id}`, {
+    const data = await fetch(`http://0.0.0.0:3000/api/reports/${id}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
